@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="793.0" prefWidth="1140.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchResourceController">
+   <children>
+      <Label layoutX="584.0" layoutY="19.0" text="Search resources">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="440.0" layoutY="65.0" text="Filter resources by:" />
+      <RadioButton id="languageId" fx:id="languageIdRadioButton" layoutX="503.0" layoutY="101.0" mnemonicParsing="false" onAction="#handleUnselectedTextFields" text="languageId">
+         <toggleGroup>
+            <ToggleGroup fx:id="radioButtons" />
+         </toggleGroup>
+      </RadioButton>
+      <TextField id="languageId" fx:id="languageIdTextField" layoutX="610.0" layoutY="98.0" />
+      <RadioButton id="tags" fx:id="tagsRadioButton" layoutX="503.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleUnselectedTextFields" text="tags" toggleGroup="$radioButtons" />
+      <TextField id="tags" fx:id="tagsTextField" layoutX="610.0" layoutY="132.0" />
+      <RadioButton id="category" fx:id="categoryRadioButton" layoutX="503.0" layoutY="169.0" mnemonicParsing="false" onAction="#handleUnselectedTextFields" text="category" toggleGroup="$radioButtons" />
+      <TextField id="category" fx:id="categoryTextField" layoutX="610.0" layoutY="166.0" />
+      <RadioButton id="userId" fx:id="userIdRadioButton" layoutX="503.0" layoutY="203.0" mnemonicParsing="false" onAction="#handleUnselectedTextFields" text="userId" toggleGroup="$radioButtons" />
+      <TextField id="userId" fx:id="userIdTextField" layoutX="610.0" layoutY="200.0" />
+      <Button fx:id="applyFilterButton" layoutX="828.0" layoutY="98.0" mnemonicParsing="false" onAction="#applyFilter" prefHeight="24.0" prefWidth="100.0" text="Apply filter" />
+      <Button fx:id="resetFiltersButton" layoutX="828.0" layoutY="132.0" mnemonicParsing="false" onAction="#resetFilters" prefHeight="24.0" prefWidth="100.0" text="Reset filters" />
+      <Button fx:id="menuButton" layoutX="828.0" layoutY="200.0" mnemonicParsing="false" onAction="#callMenuView" prefHeight="24.0" prefWidth="100.0" text="Menu" />
+      <Label layoutX="243.0" layoutY="221.0" text="*" textFill="#ff000080">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label layoutX="252.0" layoutY="218.0" prefHeight="31.0" prefWidth="149.0" text="Double click on a url cell to open it in your browser" textFill="#00000080" wrapText="true">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="loadingTableAsteriskLabel" layoutX="1027.0" layoutY="234.0" text="*" textFill="#ff000080" visible="false">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <Label fx:id="loadingTableLabel" layoutX="1036.0" layoutY="232.0" prefHeight="16.0" prefWidth="81.0" text="Loading table..." textFill="#00000080" visible="false" wrapText="true">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+      <TableView fx:id="resourceTableView" editable="true" layoutX="243.0" layoutY="253.0" prefHeight="420.0" prefWidth="874.0">
+        <columns>
+          <TableColumn fx:id="urlColumn" prefWidth="200.0" text="url" />
+          <TableColumn fx:id="languageIdColumn" prefWidth="100.0" text="languageId" />
+            <TableColumn fx:id="tagsColumn" prefWidth="125.0" text="tags" />
+            <TableColumn fx:id="categoryColumn" prefWidth="148.0" text="category" />
+            <TableColumn fx:id="commentColumn" prefWidth="175.0" text="comment" />
+            <TableColumn fx:id="userIdColumn" prefWidth="110.0" text="userId" />
+        </columns>
+      </TableView>
+      <Button fx:id="reloadTableButton" layoutX="828.0" layoutY="166.0" mnemonicParsing="false" onAction="#reloadTable" prefHeight="24.0" prefWidth="100.0" text="Reload table" />
+   </children>
+</Pane>
