@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class Repository<T> {
+public abstract class Repository<Entity> {
     protected static final String BASE_URL = "https://script.google.com/macros/s/AKfycbxFHJM5G11Wc4SRwl4Gh3VKun9_QzlfmFAthGI0rihrbd9maY3c3nb8XFaE020HMYQc/exec?";
     private static final Gson gson = new GsonBuilder().create();
 
@@ -30,9 +30,8 @@ public abstract class Repository<T> {
         connection.disconnect();
 
         JsonElement jsonElement = JsonParser.parseString(response);
-        JsonObject jsonObject = jsonElement.getAsJsonObject();
 
-        return jsonObject;
+        return jsonElement.getAsJsonObject();
     }
 
     protected RepositoryResponse post(String url) throws Exception {
@@ -41,19 +40,17 @@ public abstract class Repository<T> {
         boolean success = response.get("success").getAsBoolean();
         String message = response.get("message").toString();
 
-        RepositoryResponse repositoryResponse = new RepositoryResponse(success, message);
-        return repositoryResponse;
+        return new RepositoryResponse(success, message);
     }
 
-    protected List<T> getAll(String url, Class<T[]> typeClass) throws Exception {
+    protected List<Entity> getAll(String url, Class<Entity[]> typeClass) throws Exception {
         String memberName = "objects";
 
         JsonObject jsonObject = this.sendRequest(url);
         JsonArray jsonArray = jsonObject.getAsJsonArray(memberName);
 
-        T[] valuesArray = gson.fromJson(jsonArray, typeClass);
-        List<T> valuesList = Arrays.asList(valuesArray);
+        Entity[] valuesArray = gson.fromJson(jsonArray, typeClass);
 
-        return valuesList;
+        return Arrays.asList(valuesArray);
     }
 }

@@ -13,8 +13,7 @@ public class RepositoryResponse {
 
     @Override
     public String toString() {
-        String string = StringUtil.toJSON(this);
-        return string;
+        return StringUtil.toJSON(this);
     }
 
     public boolean getSuccess() {

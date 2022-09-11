@@ -246,7 +246,7 @@ public class SearchResourceController implements Initializable {
     }
 
     private List<TextField> createTextFieldList() {
-        List<TextField> textFields = new ArrayList<TextField>(
+        return new ArrayList<TextField>(
             Arrays.asList(
                 this.categoryTextField,
                 this.languageIdTextField,
@@ -254,8 +254,6 @@ public class SearchResourceController implements Initializable {
                 this.userIdTextField
             )
         );
-
-        return textFields;
     }
 
     private void disableTextFields() {
@@ -352,8 +350,7 @@ public class SearchResourceController implements Initializable {
         ObservableList<TablePosition> tableViewSelectedCells = tableViewSelectionModel.getSelectedCells();
         TablePosition tablePosition = tableViewSelectedCells.get(0);
 
-        int columnIndex = tablePosition.getColumn();
-        return columnIndex;
+        return tablePosition.getColumn();
     }
 
     private void enableLoadingTableMessage(boolean setVisible) {

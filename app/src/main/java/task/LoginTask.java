@@ -17,7 +17,7 @@ public class LoginTask extends Task<RepositoryResponse> {
         "pivetta21", "virginiacolares", "wisentini"
     );
 
-    private String userId;
+    private final String userId;
 
     public LoginTask(String userId) {
         this.userId = userId.toLowerCase();
@@ -77,8 +77,7 @@ public class LoginTask extends Task<RepositoryResponse> {
             success = true;
         }
 
-        RepositoryResponse repositoryResponse = new RepositoryResponse(success, message);
-        return repositoryResponse;
+        return new RepositoryResponse(success, message);
     }
 
     private static boolean isAlphanumeric(String string) {

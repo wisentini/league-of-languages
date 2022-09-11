@@ -14,7 +14,6 @@ public class AlertUtil {
         alert.setHeaderText(alertHeader);
         alert.setContentText(alertContent);
 
-        Optional<ButtonType> response = alert.showAndWait();
-        return response;
+        return alert.showAndWait();
     }
 }

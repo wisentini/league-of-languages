@@ -9,19 +9,16 @@ import java.util.List;
 
 public class CategoryRepository extends Repository<Category> {
     public Task<List<Category>> getCategoriesTask() {
-        Task<List<Category>> task = new Task<>() {
+        return new Task<>() {
             @Override
             protected List<Category> call() throws Exception {
                 String action = "getCategories";
                 String encodedAction = StringUtil.encode(action);
                 String url = String.format("%saction=%s", BASE_URL, encodedAction);
 
-                List<Category> categories = getAll(url, Category[].class);
-                return categories;
+                return getAll(url, Category[].class);
             }
         };
-
-        return task;
     }
 
     public static List<String> getCategoryNames(List<Category> categories) {

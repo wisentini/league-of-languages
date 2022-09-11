@@ -6,7 +6,7 @@ import java.net.URI;
 import javafx.concurrent.Task;
 
 public class OpenBrowserTask extends Task<Void> {
-    private String url;
+    private final String url;
 
     public OpenBrowserTask(String url) {
         this.url = url;
